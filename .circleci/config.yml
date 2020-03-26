@@ -13,3 +13,8 @@ jobs:
       - run:
           name: Push docker image
           command: docker push spanglishing/kafka-push:$CIRCLE_SHA1
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build
