@@ -24,4 +24,6 @@ ENV VERSION_APP=$VERSION
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/bin/ /app/
 
+EXPOSE 8080
+
 ENTRYPOINT ["/app/main"]
