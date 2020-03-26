@@ -22,12 +22,5 @@ jobs:
       - checkout
 
       # specify any bash command here prefixed with `run: `
-   - run:
-          name : Login docker
-          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run:
-          name: Build docker image
-          command: docker build -t spanglishing/kafka-push:$CIRCLE_SHA1 .
-      - run:
-          name: Push docker image
-          command: docker push spanglishing/kafka-push:$CIRCLE_SHA1
+      - run: go get -v -t -d ./...
+      - run: go test -v ./...
