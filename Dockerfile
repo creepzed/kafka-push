@@ -19,8 +19,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -mod=vendor -a -installsuffix cgo -ldflags
 FROM scratch
 ARG VERSION
 ENV VERSION_APP=$VERSION
-RUN touch /var/log/kafka_push.log
-ENV LOGS_FILE_PATH=/var/log/kafka_push.log
+ENV LOGS_FILE_PATH=./log/kafka_push.log
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/bin/ /app/
