@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	kafkaBrokers = strings.Split(os.Getenv("KAFKAPUSH_KAFKA_BROKERS"), ",")
+	kafkaBrokers = strings.Split(os.Getenv("KAFKA_BROKERS"), ",")
 )
 
 func main() {

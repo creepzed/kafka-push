@@ -3,8 +3,8 @@ set -e
 source ./deploy/.env
 
 echo "MY IP LOCAL: ${MY_IP}"
-echo "- KAFKAPUSH_LOGS_FILE_PATH: ${KAFKAPUSH_LOGS_FILE_PATH}"
-echo "- KAFKAPUSH_KAFKA_BROKERS: ${KAFKAPUSH_KAFKA_BROKERS}"
+echo "- LOGS_FILE_PATH: ${LOGS_FILE_PATH}"
+echo "- KAFKA_BROKERS: ${KAFKA_BROKERS}"
 
 docker run -d \
   --name=zookeeper \

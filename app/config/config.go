@@ -7,7 +7,7 @@ import (
 )
 
 func OpenLogFile() *os.File {
-	logFilePath := os.Getenv("KAFKAPUSH_LOGS_FILE_PATH")
+	logFilePath := os.Getenv("LOGS_FILE_PATH")
 	f, err := os.OpenFile(logFilePath, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
 	if err != nil {
 		log.Fatalf("error opening logfile: %v error: %v", logFilePath, err)
