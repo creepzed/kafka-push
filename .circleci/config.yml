@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    steps:
+      - checkout
+      - cd app
+      - go test -mod=vendor -v ./...
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker build -t spanglishing/kafka-push:$CIRCLE_SHA1 .
+      - run: docker push spanglishing/kafka-push:$CIRCLE_SHA1
