@@ -28,6 +28,6 @@ COPY --from=builder /go/bin/ /app/
 
 VOLUME /var/log/kafka_push/
 
-EXPOSE 8080
+EXPOSE 8089
 
 ENTRYPOINT ["/app/main"]

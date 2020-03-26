@@ -35,7 +35,7 @@ func main() {
 
 	log.Println("Starting server")
 	server := &http.Server{
-		Addr:         ":8080",
+		Addr:         ":8089",
 		ReadTimeout:  3 * time.Minute,
 		WriteTimeout: 3 * time.Minute,
 	}
