@@ -2,17 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version
       - image: circleci/golang:1.9
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
-      - run:
-          name: Directory app
-          command: cd app
-      - run:
-          name: Build app
-          command: go test -mod=vendor -v ./...
       - run:
           name : Login docker
           command: docker login -u $DOCKER_USER -p $DOCKER_PASS
