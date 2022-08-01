@@ -4,7 +4,6 @@ go 1.18
 
 require (
 	github.com/google/uuid v1.3.0
-	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/echo/v4 v4.7.2
 	github.com/segmentio/kafka-go v0.4.33
 	github.com/stretchr/testify v1.8.0
