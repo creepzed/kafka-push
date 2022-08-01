@@ -1,12 +1,11 @@
 package web
 
 import (
-
 	"errors"
 	"fmt"
 	"github.com/kafka-push/app/application/payload_usecase"
 	"github.com/kafka-push/app/shared/utils"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"net/http"
 )
 

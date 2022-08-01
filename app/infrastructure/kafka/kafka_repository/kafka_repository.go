@@ -2,11 +2,10 @@ package kafka_repository
 
 import (
 	"context"
-	"fmt"
+	"github.com/kafka-push/app/shared/log"
 	"github.com/kafka-push/app/shared/utils"
 	"github.com/segmentio/kafka-go"
 	_ "github.com/segmentio/kafka-go/snappy"
-	log "github.com/sirupsen/logrus"
 	"time"
 )
 
@@ -39,7 +38,7 @@ func (r *payloadKafkaRepository) Create(topic string, payload string) error {
 	err := kafkaWriter.WriteMessages(context.Background(), kafkaMessages...)
 	defer kafkaWriter.Close()
 	if err != nil {
-		log.Errorln(fmt.Sprintf("Error publishing topic %s and error: %s", topic, err.Error()))
+		log.WithError(err).Error("Error publishing topic %s", topic)
 		return err
 	}
 	return nil

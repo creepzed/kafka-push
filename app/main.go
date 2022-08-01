@@ -2,12 +2,11 @@ package main
 
 import (
 	"github.com/kafka-push/app/application/payload_usecase"
-	"github.com/kafka-push/app/config"
 	"github.com/kafka-push/app/infrastructure/kafka/kafka_repository"
 	"github.com/kafka-push/app/interfaces/web"
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
-	log "github.com/sirupsen/logrus"
+	"github.com/kafka-push/app/shared/log"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 	"net/http"
 	"os"
 	"strings"
@@ -19,9 +18,6 @@ var (
 )
 
 func main() {
-	logFile := config.OpenLogFile()
-	defer logFile.Close()
-
 	echoWeb := echo.New()
 	echoWeb.HideBanner = true
 	echoWeb.Use(middleware.CORS())
@@ -33,7 +29,7 @@ func main() {
 	kafkaPayloadUseCase := payload_usecase.NewProductUseCase(kafkaPayloadRepository)
 	web.NewPayloadController(echoWeb, kafkaPayloadUseCase)
 
-	log.Println("Starting server")
+	log.Info("Starting Kafka-Push")
 	server := &http.Server{
 		Addr:         ":8089",
 		ReadTimeout:  3 * time.Minute,

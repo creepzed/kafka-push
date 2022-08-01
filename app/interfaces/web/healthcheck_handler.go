@@ -1,7 +1,7 @@
 package web
 
 import (
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
 	"net/http"
 	"os"
 )
@@ -10,13 +10,12 @@ type healthHandler struct {
 }
 
 type health struct {
-	Status string `json:"status"`
+	Status  string `json:"status"`
 	Version string `json:"version"`
 }
 
 func NewHealthHandler(e *echo.Echo) {
-	h := &healthHandler{
-	}
+	h := &healthHandler{}
 
 	e.GET("/health", h.HealthCheck)
 }

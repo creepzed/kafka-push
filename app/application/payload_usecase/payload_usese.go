@@ -2,7 +2,7 @@ package payload_usecase
 
 import (
 	"github.com/kafka-push/app/domain/repository"
-	log "github.com/sirupsen/logrus"
+	"github.com/kafka-push/app/shared/log"
 )
 
 type PayloadUseCase interface {
@@ -21,7 +21,7 @@ func NewProductUseCase(payloadRepository repository.PayloadRepository) *payloadU
 
 func (u *payloadUseCase) Create(topic string, payload string) error {
 
-	log.Printf("Adding msg topic %s, value : { %v }", topic, payload)
+	log.Info("Adding msg topic %s, value : { %v }", topic, payload)
 	err := u.payloadRepository.Create(topic, payload)
 	if err != nil {
 		return err
